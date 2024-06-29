@@ -1,0 +1,26 @@
+- hosts: localhost
+  become: true
+  remote_user: ubuntu
+
+  tasks:
+    - name: Update apt and install openjdk-17-jdk
+      apt:
+        name: openjdk-17-jdk
+        update_cache: yes
+        state: present
+
+    - name: Install jenkins key
+      get_url:
+        url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+        dest: /usr/share/keyrings/jenkins-keyring.asc
+
+    - name: Add jenkins repository
+      apt_repository:
+        repo: deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/
+        filename: jenkins
+    
+    - name: Update apt and install jenkins
+      apt:
+        name: jenkins
+        update_cache: yes
+        state: present
