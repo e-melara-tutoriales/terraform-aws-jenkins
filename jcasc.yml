@@ -1,0 +1,8 @@
+jenkins:
+  systemMessage: "Jenkins configurado automáticamente por Jenkins Configuration as Code plugin"
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: "admin"
+          password: "admin"
