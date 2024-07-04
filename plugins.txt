@@ -39,3 +39,4 @@ kubernetes
 kubernetes-cli
 uno-choice
 performance
+strict-crumb-issuer
